@@ -7,7 +7,7 @@
 * [1.1   引言](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.1-yin-yan.md)
 * [1.2 编程元素](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.2-bian-cheng-yuan-su.md)
 * [1.3 定义新函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.3-ding-yi-xin-han-shu.md)
-* [1.4 函数设计](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.4-han-shu-she-ji.md)
+* [1.4 设计函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.4-she-ji-han-shu.md)
 * [1.5 控制](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.5-kong-zhi.md)
 * [1.6 高等函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.6-gao-deng-han-shu.md)
 * [1.7 递归函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/untitled.md)
