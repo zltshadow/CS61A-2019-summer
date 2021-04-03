@@ -9,7 +9,7 @@
 * [1.3 定义新函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.3-ding-yi-xin-han-shu.md)
 * [1.4 设计函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.4-she-ji-han-shu.md)
 * [1.5 控制](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.5-kong-zhi.md)
-* [1.6 高等函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.6-gao-deng-han-shu.md)
+* [1.6 高阶函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.6-gao-jie-han-shu.md)
 * [1.7 递归函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/untitled.md)
 
 ## 第2章 数据构建抽象
