@@ -24,13 +24,13 @@
 * [2.8 效率](di-2-zhang-shu-ju-gou-jian-chou-xiang/2.8-xiao-lv.md)
 * [2.9 递归对象](di-2-zhang-shu-ju-gou-jian-chou-xiang/2.9-di-gui-dui-xiang.md)
 
-## 第3章 解释电脑程序
+## 第3章 解释计算机程序
 
-* [3.1 引言](di-3-zhang-jie-shi-dian-nao-cheng-xu/3.1-yin-yan.md)
-* [3.2 函数式编程](di-3-zhang-jie-shi-dian-nao-cheng-xu/3.2-han-shu-shi-bian-cheng.md)
-* [3.3 异常处理](di-3-zhang-jie-shi-dian-nao-cheng-xu/3.3-yi-chang-chu-li.md)
-* [3.4 组合语言解释器](di-3-zhang-jie-shi-dian-nao-cheng-xu/3.4-zu-he-yu-yan-jie-shi-qi.md)
-* [3.5 抽象语言解释器](di-3-zhang-jie-shi-dian-nao-cheng-xu/3.5-chou-xiang-yu-yan-jie-shi-qi.md)
+* [3.1 引言](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.1-yin-yan.md)
+* [3.2 函数式编程](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.2-han-shu-shi-bian-cheng.md)
+* [3.3 异常处理](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.3-yi-chang-chu-li.md)
+* [3.4 组合语言解释器](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.4-zu-he-yu-yan-jie-shi-qi.md)
+* [3.5 抽象语言解释器](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.5-chou-xiang-yu-yan-jie-shi-qi.md)
 
 ## 第4章 数据处理
 
