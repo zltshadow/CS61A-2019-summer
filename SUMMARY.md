@@ -28,7 +28,7 @@
 
 * [3.1 引言](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.1-yin-yan.md)
 * [3.2 函数式编程](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.2-han-shu-shi-bian-cheng.md)
-* [3.3 异常处理](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.3-yi-chang-chu-li.md)
+* [3.3 异常](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.3-yi-chang.md)
 * [3.4 组合语言解释器](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.4-zu-he-yu-yan-jie-shi-qi.md)
 * [3.5 抽象语言解释器](di-3-zhang-jie-shi-ji-suan-ji-cheng-xu/3.5-chou-xiang-yu-yan-jie-shi-qi.md)
 
