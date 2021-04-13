@@ -4,7 +4,9 @@
 
 [原文链接](http://composingprograms.com/)
 
-作者：zlt\_shadow
+作者：[zlt\_shadow](https://github.com/zltshadow)
 
 许可： [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/)
+
+github仓库：[https://github.com/zltshadow/CS61A-2019-summer](https://github.com/zltshadow/CS61A-2019-summer)
 
