@@ -1,6 +1,6 @@
 # Table of contents
 
-* [CS61A-2019-summer](README.md)
+* [计算机程序的构造和解释python中文版](README.md)
 
 ## 第1章：函数构建抽象 <a id="di-1-zhang-yong-han-shu-gou-jian-chou-xiang"></a>
 
