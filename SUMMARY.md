@@ -11,6 +11,7 @@
 * [1.5 控制](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.5-kong-zhi.md)
 * [1.6 高阶函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/1.6-gao-jie-han-shu.md)
 * [1.7 递归函数](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/untitled.md)
+* [项目1 Hog游戏](di-1-zhang-yong-han-shu-gou-jian-chou-xiang/xiang-mu-1-hog-you-xi.md)
 
 ## 第2章 数据构建抽象
 
