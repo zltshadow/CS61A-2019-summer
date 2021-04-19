@@ -1,0 +1,239 @@
+# Text File questions
+
+## Problem 01: Sample Paragraphs
+
+- **Which functions from utils.py will you use for interacting with the sample_paragraphs.txt file?**
+
+None of them.
+
+(1) Why we will not use the `close()` function:
+
+Because the lifetime of a file object could be automatically managed by context managers.
+
+This is to say, we do not need to call the `close()` function explicitly.
+
+In fact, the following code is considered a bad-practice:
+
+```python
+f = open('word.txt')
+... do something with f ...
+f.close()  # or close(f), either
+```
+
+And it should be:
+
+```python
+with open('word.txt') as f:
+    ... do something with f ...
+    # Now f would be automatically closed
+```
+
+This practice is also true in other programming languages.
+
+In C# there is `IDisposable` interface and `using` statement that do the same thing:
+
+```C#
+using (FileStream stream = File.Open("C:\\bin", FileMode.Open))
+using (BinaryReader reader = new BinaryReader(stream))
+{
+    int a = reader.ReadInt32();
+    int b = reader.ReadInt32();
+
+    Console.WriteLine(a);
+    Console.WriteLine(b);
+}
+```
+
+In Haskell this pattern is simulated by functions prefixed with `with`.
+
+```haskell
+main :: IO ()
+main = withFile "word.txt" ReadMode $ \h -> do
+    ... do something with the file handler ...
+```
+
+In C++ there is a closely related concept called RAII (Resource acquisition is initialization).
+
+People cannot always remember to close the file handler, especially when the there are many operations in the function. Therefore we will simply avoid using it.
+
+Further reading: <https://stackoverflow.com/a/1832589>
+
+(2) Why we will not use the `readable()` function:
+
+Because we cannot exactly tell what to do if a file is unreadable.
+
+Since we are splitting our program into several small functions, each function would do their things separately, and the callee would not know the appropriate response when an error occurs. The response involves several possibilities, including retrying the operation with another object, printing an error message, returning `None`, throwing an error, writing the error to a log file, returning a disjoint union of the result type and the error type that contains the error message, or terminating the program.
+
+If we checks if a file is readable, we do not know which response to take. On the contrary, if we do not perform the check, and the file is unreadable, the function would raise `IOError` to the caller, which makes it more clear and easy to debug.
+
+Further reading: <https://stackoverflow.com/a/32074344>
+
+(3) Why we will not use the `readline()` function:
+
+Because there is file iteration that does not require any functions, which is more suitable in this case.
+
+There are two ways to read a file line by line in Python, which are `readline()` and file iteration. The difference is that `readline()` never read more than one line, which means reading character by character, while file iteration reads in blocks.
+
+When we are not doing other operations on the file, reading in blocks would be more efficient.
+
+Further reading: <https://stackoverflow.com/a/10012710>
+
+(4) Why we will not use the `readlines()` function:
+
+Because the function returns a list, which is inefficient.
+
+Returning list instead of a generator means the function is strictly evaluated instead of lazy evaluated. In this project, only one line of the file is needed at a time, therefore evaluating the rest of the file is unnecessary.
+
+The efficient way to use `readlines()` is to not use it.
+
+Further reading: <https://stackoverflow.com/a/17246300>
+
+(5) Why we will not use the `lower()` function:
+
+Because none of the functions needs to lowercase a string.
+
+Searching the word "lower" on the description of Typing Test yields only four occurrences.
+
+The first occurrence is "the lower text box", which is unrelated.
+
+The second is in function `pig_latin()`, which says "the input will only contain lowercase letters and non-alphabetic characters". This means that we do not need to perform the lowercase conversion inside the function, therefore need not to call the `lower()` function.
+
+The third and fourth occurrences are about the `lower()` function itself.
+
+We should not implement features that are not existed in documentation, therefore we will not use the `lower()` function.
+
+(6) Why we will not use the `split()` function:
+
+Because there is built-in `string.split()` method, which has better portability.
+
+(7) Why we will not use the `strip()` function:
+
+We would like to use `rstrip()` for better performance, but there is a test case that is not well-written, which contains spaces at the end of a line.
+
+On the other hand, again there is built-in `string.strip()` method, which has better portability.
+
+## Problem 02: Words Per Minute
+
+- **Given a long string that contains a full paragraph (e.g. "This is my name. It is Bob. Also, I have a cat named Troy."), what function will you use to separate a string containing a full paragraph into its individual words?**
+
+It depends how accurate we would like to split the words.
+
+For the easiest way we could use the built-in `string.strip()` method, which must be sufficient for this project.
+
+A more accurate way is to use `list(map(lambda x: x.group(0), re.finditer(r'\w+', str)))`, which ignores all the punctuations.
+
+It would be more complicated if we take hyphens, acute accent, grave accent and non-ascii characters into consideration.
+
+- **What is the calculation you will use in order to measure Words Per Minute speed? (You can describe your formula.)**
+
+Let $l$ be the length of the input string, $w$ be the number of words typed, then according to the description,
+
+$$
+w=l/5
+$$
+
+Let $s$ be Words Per Minute and $t$ be minutes elapsed, then,
+
+$$
+s=w/t
+$$
+
+$s$ should equal to $\infty$ if $t$ is equal to 0, indicating that the speed is not measured.
+
+- **What is the calculation you will use in order to measure accuracy? (You can describe your formula.)**
+
+Let $a$ be the accuracy (in percentage), $s_1$ be the sample paragraph, $s_2$ be the typed string, then,
+
+$$
+alg = \lambda (c, l), (s, t): (\mathsf{if}\,s == t\,\mathsf{then}\,c+1\,\mathsf{else}\,c, l + 1)\\
+a = truediv\left(reduce\left(alg, zip\left(split\left(s_1\right), split\left(s_2\right)\right), \left(0, 0\right)\right)\right) * 100
+$$
+
+## Problem 03: Pig Latin
+
+- **How will you identify that a word starts with a consonant cluster?**
+
+Get the index of the first vowel character in the word, or the length of the word if there is no vowel character.
+
+Split the string into two part from the index. The word should start with a consonant cluster if the left part is not empty.
+
+## Problem 04: Autocorrect Skeleton
+
+- **How will you calculate the difference scores between the user input string and each valid word, and determine which difference is the smallest?**
+
+This is similar with finding the first occurrence of the minimum elements in a list which is guaranteed to contain only non-negative integers.
+
+Iterate through the list of all the valid words. If the input string matches the word, it indicates that the word is correct, therefore simply return the word. If they do not match, record the minimal value ever seen, and return that value at the end of the iteration.
+
+The distance function should be passed into the function as an argument.
+
+## Problem 05: Score Function 
+
+- **What will your base case be?**
+
+Our implementation will use high-order function, and contains neither iteration nor recursion. So there is no base case.
+
+Zip the two strings together, the longer one will be automatically truncated. Then reduce the zip structure with `sum()` function.
+
+- **Identify two example inputs which fall into different recursive calls. In each of these cases, what recursive call should be made?**
+
+It should have been `('x', 'x')` and `('y', 'z')`.
+
+## Problem 06: 
+
+- **What does each of the recursive calls in the skeleton represent? Are there additional cases which don't fit into the three already given?**
+
+* If `word1` is empty
+* If `word2` is empty
+* If the first character of `word1` is equal to the first character of `word2`
+
+- **If we called score_function("bot", "boot"), list a series of successive recursive calls we would go through to reach the base case. For example, if we called score_function("add", "aadd"), one step could be score_function("add", "aadd") -> score_function("add", "add").**
+
+$$
+f(``bot", ``boot") \rightarrow f(``ot", ``oot") \rightarrow f(``t", ``ot") \rightarrow f(``t", ``t") \rightarrow f(``", ``")
+$$
+
+- **Based on your above list of recursive calls, classify each step as an add, remove, a swap, or something else.**
+
+$$
+f(``bot", ``boot") \rightarrow f(``ot", ``oot") \rightarrow f(``t", ``ot") \overset{\mathrm{remove}}{\rightarrow} f(``t", ``t") \rightarrow f(``", ``")
+$$
+
+- **Why would your function choose this sequence of recursive calls over another?**
+
+Both order should work. It is just code convention.
+
+## Problem 07: Accuracy
+
+- **In your own words, why do we need to improve the accuracy of our existing score_function? In other words, what is the problem that we are trying to solve?**
+
+The difference of two characters are calculated with a weight according to the keyboard layout.
+
+- **How can you adapt your score function from the previous problem to take into account key distances?**
+
+(Hint: which recursive call will need to be modified?)
+
+The result of `substitute_char`.
+
+## Problem 08: Efficiency
+
+- **What data structure will you use to store all of the differences that score_function has already calculated?**
+
+I will use the `lru_cache` decorator in Python standard library. 
+
+- **What types of values will this data structure contain?**
+
+The result of the function.
+
+See <https://stackoverflow.com/a/48945957>.
+
+- **Using the data structure you described, given a pair of words, how will you check whether score_function has already been called on that pair of words? If so, how will you access the already calculated difference?**
+
+Use the `cache_info()` method of a decorated function.
+
+From Python 3 documentation: <https://docs.python.org/3/library/functools.html#functools.lru_cache>.
+
+```python
+>>> fib.cache_info()
+CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
+```
