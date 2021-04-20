@@ -187,6 +187,7 @@ def end(s):
 def weight(size):
     """Construct a weight of some size."""
     assert size > 0
+    "*** YOUR CODE HERE ***"
     return ['weight', size]
 
 def size(w):
